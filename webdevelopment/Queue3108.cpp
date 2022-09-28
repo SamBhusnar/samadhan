@@ -1,3 +1,4 @@
+// author : Sam Bhusnar & Ranjit Deskmukh
 #include <iostream>
 using namespace std;
 #define max 5
