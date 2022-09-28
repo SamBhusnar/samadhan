@@ -9,7 +9,7 @@ public:
     {
         q->front = -1;
         q->rear = -1;
-        cout<<"Queue is create\n";
+        cout << "Queue is create\n";
     }
     void isfull(Queue *);
     void isempty(Queue *);
@@ -60,29 +60,31 @@ int Queue::remove(Queue *q)
     else
     {
         ++q->front;
+        cout << q->item[q->front] << " is element is removed \n";
         return (q->item[q->front]);
     }
 }
 void Queue::display(Queue *q)
 {
     int i;
-    for (i = q->rear; i <=0; i++)
+    int save = q->front;
+    // q->front = -1; // this statement introduce  an bug
+    for (i = q->rear; i > save; i--)
     {
-        cout << q->item[q->rear];
-        --q->rear;
+        ++q->front;
+        cout << q->item[q->front] << '\n';
     }
+    q->front = save;
 }
 int main()
 {
     int inp, elem, rmelement;
     Queue obj, *q, p;
     q = &p;
-    cout << "we are going to make queue menu drivan program using some do and while if else conditoin";
-   
     do
     {
-         cout << "\n1.create\n2.isfull\n3.isempty\n4.insert\n5.remove\n6.display\n7.exit\n";
-    cin >> inp;
+        cout << "\n1.create\n2.isfull\n3.isempty\n4.insert\n5.remove\n6.display\n7.exit\n";
+        cin >> inp;
         switch (inp)
         {
         case 1:
@@ -114,3 +116,5 @@ int main()
 
     return 0;
 }
+
+// this program have so much logical error if you've think in depth
